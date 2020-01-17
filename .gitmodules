@@ -1,0 +1,9 @@
+[submodule "Amsel.Rundown"]
+	path = Amsel.Rundown
+	url = https://github.com/Examed/Amsel.Rundown
+[submodule "Amsel.Authentication"]
+	path = Amsel.Authentication
+	url = https://github.com/Examed/Amsel.Authentication
+[submodule "Amsel.Streamlabs"]
+	path = Amsel.Streamlabs
+	url = https://github.com/Examed/Amsel.Streamlabs
