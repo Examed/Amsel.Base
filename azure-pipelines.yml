@@ -24,13 +24,13 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: restore
-    projects: '$(project)'
+    projects: '**.sln'
 
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
     command: build
-    projects: '$(project)'
+    projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
