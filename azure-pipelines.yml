@@ -10,8 +10,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  solution: '**/*.sln'
-  project: "**/*.csproj"
+  solution: '**.sln'
+  project: "**.csproj"
   buildConfiguration: 'Release'
 
 steps:
