@@ -9,6 +9,8 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
 steps:
@@ -30,7 +32,6 @@ steps:
   inputs:
     command: publish
     publishWebProjects: True
-    projects: '**/*.csproj'
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
 
