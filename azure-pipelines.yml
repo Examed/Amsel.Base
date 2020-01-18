@@ -12,26 +12,29 @@ pool:
 variables:
   solution: '**/*.sln'
   project: "**/*.csproj"
-  tests: "**/Tests.csproj"
-  buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
 steps:
-- task: DotNetCoreCLI@2
+- task: UseDotNet@2
+  displayName: 'Install .NET Core SDK'
   inputs:
-    command: 'restore'
-    projects: '$(project)'
-    feedsToUse: 'select'
-  displayName: Restore
+    version: 3.0.x
+    performMultiLevelLookup: true
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'build'
+    command: restore
     projects: '$(project)'
+
+- task: DotNetCoreCLI@2
   displayName: Build
+  inputs:
+    command: build
+    projects: '$(project)'
+    arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'test'
-    projects: '$(tests)'
-  displayName: Test
+    command: test
+    projects: '**/*Tests.csproj'
+    arguments: '--configuration $(buildConfiguration)'
