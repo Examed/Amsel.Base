@@ -18,7 +18,7 @@ namespace Amsel.DTO.Logging
         public string CallerMemberName { get; set; }
     }
 
-    public class LogOccurrenceDTO : GuidEntityDTO, IMultiTenantDTO
+    public class LogOccurrenceDTO : GuidEntityDTO, ITenantDTO
     {
         public DateTime Time { get; set; } = DateTime.UtcNow;
         public string Tenant { get; set; }
