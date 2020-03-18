@@ -26,9 +26,8 @@ namespace Amsel.Access.Rundown.Services
 
         protected override bool RequestLocal => true;
 
-        public LogMessageAccess(SecretAuthentication authenticationService, TenantName tenant) : base(tenant, authenticationService) { }
-        public LogMessageAccess(SecretAuthentication authenticationService) : base(authenticationService) { }
-        public LogMessageAccess() : base(new SecretAuthentication()) { }
+        public LogMessageAccess(ISecretAuthenticationService authenticationService, TenantName tenant) : base(tenant, authenticationService) { }
+        public LogMessageAccess(ISecretAuthenticationService authenticationService) : base(authenticationService) { }   
     }
 
     public class LogOccurrenceAccess : CRUDAccess<LogOccurrenceDTO>
@@ -40,8 +39,7 @@ namespace Amsel.Access.Rundown.Services
 
         protected override bool RequestLocal =>true;
 
-        public LogOccurrenceAccess(SecretAuthentication authenticationService, TenantName tenant) : base(tenant, authenticationService) { }
-        public LogOccurrenceAccess(SecretAuthentication authenticationService) : base(authenticationService) { }
-        public LogOccurrenceAccess() : base(new SecretAuthentication()) { }
+        public LogOccurrenceAccess(ISecretAuthenticationService authenticationService, TenantName tenant) : base(tenant, authenticationService) { }
+        public LogOccurrenceAccess(ISecretAuthenticationService authenticationService) : base(authenticationService) { }
     }
 }
