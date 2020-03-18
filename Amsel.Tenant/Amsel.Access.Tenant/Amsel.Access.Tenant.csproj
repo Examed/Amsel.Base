@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Amsel.Framework\Amsel.Framework.Structure\Amsel.Framework.Structure\Amsel.Framework.Structure.csproj" />
-    <ProjectReference Include="..\Amsel.Model.Logging\Amsel.Model.Logging.csproj" />
-    <ProjectReference Include="..\Amsel.Resources.Logging\Amsel.Resources.Logging.csproj" />
+    <ProjectReference Include="..\Amsel.Model.Tenant\Amsel.Model.Tenant.csproj" />
+    <ProjectReference Include="..\Amsel.Resources.Tenant\Amsel.Resources.Tenant.csproj" />
   </ItemGroup>
 
 </Project>

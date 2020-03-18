@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.2" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Amsel.Tenant\Amsel.Interfaces.Tenant\Amsel.Interfaces.Tenant.csproj" />
+    <ProjectReference Include="..\..\Amsel.Tenant\Amsel.Model.Tenant\Amsel.Model.Tenant.csproj" />
+  </ItemGroup>
+
+</Project>
