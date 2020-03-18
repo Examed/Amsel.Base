@@ -1,9 +1,9 @@
 ﻿using Amsel.Access.Authentication.Services;
-using Amsel.Endpoint.Logging.Models;
 using Amsel.Framework.Structure.Interfaces;
 using Amsel.Framework.Structure.Models;
-using Amsel.Resources.Rundown.Endpoints;
-using System;
+using Amsel.Model.Logging.LogMessageModels;
+using Amsel.Model.Logging.LogOccurrenceModels;
+using Amsel.Resources.Logging.Endpoints;
 
 namespace Amsel.Access.Rundown.Services
 {

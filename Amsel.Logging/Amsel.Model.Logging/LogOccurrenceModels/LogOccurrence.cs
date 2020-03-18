@@ -1,11 +1,12 @@
-﻿using Amsel.Framework.Database.SQL.Interfaces;
-using Amsel.Framework.Database.SQL.Models;
+﻿using Amsel.Model.Logging.LogMessageModels;
+using Amsel.Model.Tenant.Interfaces;
+using Amsel.Model.Tenant.TenantModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Amsel.Endpoint.Logging.Models
+namespace Amsel.Model.Logging.LogOccurrenceModels
 {
     [Owned,ComplexType]
     public class LogOccurrence : IMultiTenant
@@ -15,7 +16,7 @@ namespace Amsel.Endpoint.Logging.Models
         public string Properties { get; set; }
         public string StackTrace { get; set; }
         public DateTime Time { get; set; }
-        public Tenant Tenant { get; set; }
+        public TenantEntity Tenant { get; set; }
         public LogMessage Message { get; set; }
 
         public LogOccurrence() { }

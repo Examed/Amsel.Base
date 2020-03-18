@@ -1,4 +1,4 @@
-﻿namespace Amsel.Resources.Rundown.Endpoints
+﻿namespace Amsel.Resources.Logging.Endpoints
 {
     public static class LoggingEndpointResources
     {

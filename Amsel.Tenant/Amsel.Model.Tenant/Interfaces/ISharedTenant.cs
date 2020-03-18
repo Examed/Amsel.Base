@@ -1,7 +1,7 @@
-﻿using Amsel.Framework.Database.SQL.Models;
+﻿using Amsel.Model.Tenant.TenantModels;
 using System.Collections.Generic;
 
-namespace Amsel.Framework.Database.SQL.Interfaces
+namespace Amsel.Model.Tenant.Interfaces
 {
     public interface ISharedTenant : IMultiTenant
     {
@@ -9,6 +9,6 @@ namespace Amsel.Framework.Database.SQL.Interfaces
 
         bool IsSystem { get; set; }
 
-        ICollection<Tenant> UsedBy { get; set; }
+        ICollection<TenantEntity> UsedBy { get; set; }
     }
 }

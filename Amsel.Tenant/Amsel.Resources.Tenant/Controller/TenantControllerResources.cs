@@ -1,4 +1,4 @@
-﻿namespace Amsel.Resources.Authentication.Controller
+﻿namespace Amsel.Resources.Tenant.Controller
 {
     public static class TenantControllerResources
     {

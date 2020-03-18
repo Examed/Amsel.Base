@@ -5,8 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="JsonLogic.Net" Version="1.1.8" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Amsel.Framework\Amsel.Framework.Base\Amsel.Framework.Base.csproj" />
+    <ProjectReference Include="..\Amsel.Interfaces.Tenant\Amsel.Interfaces.Tenant.csproj" />
   </ItemGroup>
 
 </Project>

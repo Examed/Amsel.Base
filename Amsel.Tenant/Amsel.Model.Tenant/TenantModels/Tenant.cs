@@ -2,31 +2,31 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Amsel.Framework.Database.SQL.Models
+namespace Amsel.Model.Tenant.TenantModels
 {
-    public class Tenant 
+    public class TenantEntity 
     {
         [Key]
         public Guid Id { get; protected set; }
 
         public bool Admin { get; protected set; }
-      
-        public string TenantName { get;  set; }
+
+        public string TenantName { get; set; }
 
 
         #region  CONSTRUCTORS
 
         [JsonConstructor]
-        public Tenant(Guid id, string tenantName)
+        public TenantEntity(Guid id, string tenantName)
         {
             Id = id;
             TenantName = tenantName ?? throw new ArgumentNullException(nameof(tenantName));
         }
 
-        public Tenant(string tenantName) => TenantName =
+        public TenantEntity(string tenantName) => TenantName =
             tenantName ?? throw new ArgumentNullException(nameof(tenantName));
 
-        protected Tenant()
+        protected TenantEntity()
         {
         }
         #endregion

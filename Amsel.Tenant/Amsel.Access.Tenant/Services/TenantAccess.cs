@@ -1,10 +1,9 @@
-﻿using Amsel.Framework.Database.SQL.Models;
-using Amsel.Framework.Structure.Blazor.Authorize;
-using Amsel.Framework.Structure.Interfaces;
+﻿using Amsel.Framework.Structure.Interfaces;
 using Amsel.Framework.Structure.Models.Address;
 using Amsel.Framework.Utilities.Extensions.Http;
-using Amsel.Resources.Authentication.Controller;
+using Amsel.Model.Tenant.TenantModels;
 using Amsel.Resources.Authentication.Endpoints;
+using Amsel.Resources.Tenant.Controller;
 using JetBrains.Annotations;
 using System;
 using System.Net.Http;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Amsel.Access.Authentication.Services
 {
-    public class TenantAccess : CRUDAccess<Tenant>
+    public class TenantAccess : CRUDAccess<TenantEntity>
     {
         #region  CONSTRUCTORS
 
@@ -24,21 +23,21 @@ namespace Amsel.Access.Authentication.Services
 
         public async Task<Guid?> GetIdByNameAsync(string name)
         {
-            Tenant tenant = await GetTenantByNameAsync(name).ConfigureAwait(false);
+            TenantEntity tenant = await GetTenantByNameAsync(name).ConfigureAwait(false);
             return tenant.Id;
         }
 
-        public async Task<Tenant> GetTenantAsync(Guid id)
+        public async Task<TenantEntity> GetTenantAsync(Guid id)
         {
             HttpResponseMessage response = await GetAsync(TenantGet, (nameof(id), id)).ConfigureAwait(false);
-            return await response.DeserializeElseThrowAsync<Tenant>().ConfigureAwait(false);
+            return await response.DeserializeElseThrowAsync<TenantEntity>().ConfigureAwait(false);
         }
 
         [NotNull]
-        public async Task<Tenant> GetTenantByNameAsync(string name)
+        public async Task<TenantEntity> GetTenantByNameAsync(string name)
         {
             HttpResponseMessage response = await GetAsync(TenantGet, (nameof(name), name)).ConfigureAwait(false);
-            return await response.DeserializeElseThrowAsync<Tenant>().ConfigureAwait(false);
+            return await response.DeserializeElseThrowAsync<TenantEntity>().ConfigureAwait(false);
         }
         #endregion
 
