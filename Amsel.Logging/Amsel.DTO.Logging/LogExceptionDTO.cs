@@ -1,5 +1,4 @@
 ﻿using Amsel.Framework.Base.DTO;
-using Amsel.Framework.Base.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ namespace Amsel.DTO.Logging
 {
 
 
-    public class LogMessageDTO : GuidEntityDTO
+    public class LogMessageDTO : GuidEntity
     {
         public LogLevel Level { get; set; }
         public string Logger { get; set; }
@@ -18,7 +17,7 @@ namespace Amsel.DTO.Logging
         public string CallerMemberName { get; set; }
     }
 
-    public class LogOccurrenceDTO : GuidEntityDTO, ITenantDTO
+    public class LogOccurrenceDTO : GuidEntity
     {
         public DateTime Time { get; set; } = DateTime.UtcNow;
         public string Tenant { get; set; }
