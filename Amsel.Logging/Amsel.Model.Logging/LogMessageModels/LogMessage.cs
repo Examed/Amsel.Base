@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Amsel.Model.Logging.LogMessageModels
@@ -9,7 +10,7 @@ namespace Amsel.Model.Logging.LogMessageModels
     [ComplexType]
     public class LogMessage
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
 
         public string Exception { get; set; }
@@ -20,7 +21,7 @@ namespace Amsel.Model.Logging.LogMessageModels
 
         public string Message { get; set; }
 
-        public ICollection<LogOccurrence> Occurences { get; set; } = new List<LogOccurrence>();
+
 
         public LogMessage() { }
 

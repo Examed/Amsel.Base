@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Amsel.Model.Logging.LogOccurrenceModels
 {
-    [Owned,ComplexType]
+    [ComplexType]
     public class LogOccurrence : IMultiTenant
     {
         [Key]
@@ -20,7 +20,7 @@ namespace Amsel.Model.Logging.LogOccurrenceModels
         public LogMessage Message { get; set; }
 
         public LogOccurrence() { }
-        public LogOccurrence(LogMessage message, string properties, string stackTrace)
+        public LogOccurrence(LogMessage message,string properties, string stackTrace)
         {
             Message = message;
             Properties = properties ?? throw new ArgumentNullException(nameof(properties));
