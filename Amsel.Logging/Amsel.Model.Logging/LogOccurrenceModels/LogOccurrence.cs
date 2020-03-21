@@ -1,7 +1,6 @@
 ﻿using Amsel.Model.Logging.LogMessageModels;
 using Amsel.Model.Tenant.Interfaces;
 using Amsel.Model.Tenant.TenantModels;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
