@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Amsel.Model.Tenant.Interfaces
 {
-    public interface ISharedTenant : IMultiTenant
+    public interface ISharedTenant : ITenantEntity
     {
         bool IsPublic { get; set; }
 

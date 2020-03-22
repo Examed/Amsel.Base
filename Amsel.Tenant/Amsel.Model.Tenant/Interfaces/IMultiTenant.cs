@@ -2,7 +2,7 @@
 
 namespace Amsel.Model.Tenant.Interfaces
 {
-    public interface IMultiTenant
+    public interface ITenantEntity
     {
         TenantEntity Tenant { get; set; }
     }

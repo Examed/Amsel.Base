@@ -4,14 +4,14 @@ using System;
 
 namespace Amsel.Model.Tenant.TenantModels
 {
-    public abstract class DataEntity : IGuidEntity, IMultiTenant, INamedEntity
+    public abstract class DataEntity : IGuidEntity, ITenantEntity, INamedEntity
     {
         public Guid Id { get; set; }
         public bool GlobalAccess { get; set; }
 
         public string Name { get; set; }
 
-        #region IMultiTenant Members
+        #region ITenantEntity Members
 
         public TenantEntity Tenant { get; set; }
         #endregion

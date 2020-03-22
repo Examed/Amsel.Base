@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Amsel.Model.Logging.LogOccurrenceModels
 {
     [ComplexType]
-    public class LogOccurrence : IMultiTenant
+    public class LogOccurrence : ITenantEntity
     {
         [Key]
         public int Id { get;set;}
