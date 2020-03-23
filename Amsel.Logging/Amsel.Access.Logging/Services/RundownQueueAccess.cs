@@ -1,36 +1,39 @@
-﻿using Amsel.Access.Authentication.Services;
-using Amsel.Framework.Structure.Interfaces;
-using Amsel.Framework.Structure.Models;
+﻿using Amsel.Framework.Structure.Interfaces;
+using Amsel.Framework.Structure.Services;
 using Amsel.Model.Logging.LogMessageModels;
 using Amsel.Model.Logging.LogOccurrenceModels;
+using Amsel.Model.Tenant.TenantModels;
 using Amsel.Resources.Logging.Endpoints;
 
-namespace Amsel.Access.Rundown.Services
+namespace Amsel.Access.Logging.Services
 {
-
     public class LogMessageAccess : CRUDAccess<LogMessage>
     {
+        public LogMessageAccess(ISecretAuthenticationService authenticationService) : base(authenticationService) { }
+
+        public LogMessageAccess(ISecretAuthenticationService authenticationService, TenantName tenant) : base(tenant, authenticationService) { }
+
         /// <inheritdoc/>
         protected override string Endpoint => LoggingEndpointResources.ENDPOINT;
-        /// <inheritdoc/>
-        protected override string Resource => LoggingEndpointResources.MESSAGE;
 
         protected override bool RequestLocal => true;
 
-        public LogMessageAccess(ISecretAuthenticationService authenticationService, TenantName tenant) : base(tenant, authenticationService) { }
-        public LogMessageAccess(ISecretAuthenticationService authenticationService) : base(authenticationService) { }   
+        /// <inheritdoc/>
+        protected override string Resource => LoggingEndpointResources.MESSAGE;
     }
 
     public class LogOccurrenceAccess : CRUDAccess<LogOccurrence>
     {
-        /// <inheritdoc/>
-        protected override string Endpoint => LoggingEndpointResources.ENDPOINT;
-        /// <inheritdoc/>
-        protected override string Resource => LoggingEndpointResources.OCCURRENCE;
-
-        protected override bool RequestLocal =>true;
+        public LogOccurrenceAccess(ISecretAuthenticationService authenticationService) : base(authenticationService) { }
 
         public LogOccurrenceAccess(ISecretAuthenticationService authenticationService, TenantName tenant) : base(tenant, authenticationService) { }
-        public LogOccurrenceAccess(ISecretAuthenticationService authenticationService) : base(authenticationService) { }
+
+        /// <inheritdoc/>
+        protected override string Endpoint => LoggingEndpointResources.ENDPOINT;
+
+        protected override bool RequestLocal => true;
+
+        /// <inheritdoc/>
+        protected override string Resource => LoggingEndpointResources.OCCURRENCE;
     }
 }

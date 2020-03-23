@@ -10,22 +10,28 @@ namespace Amsel.Model.Logging.LogOccurrenceModels
     [ComplexType]
     public class LogOccurrence : ITenantEntity
     {
-        [Key]
-        public int Id { get;set;}
-        public string Properties { get; set; }
-        public string StackTrace { get; set; }
-        public DateTime Time { get; set; }
-        public TenantEntity Tenant { get; set; }
-        public LogMessage Message { get; set; }
-
         public LogOccurrence() { }
-        public LogOccurrence(LogMessage message,string properties, string stackTrace)
+
+        public LogOccurrence(LogMessage message, string properties, string stackTrace)
         {
             Message = message;
             Properties = properties ?? throw new ArgumentNullException(nameof(properties));
             StackTrace = stackTrace;
             Time = DateTime.UtcNow;
         }
+
+        [Key]
+        public int Id { get; set; }
+
+        public LogMessage Message { get; set; }
+
+        public string Properties { get; set; }
+
+        public string StackTrace { get; set; }
+
+        public TenantEntity Tenant { get; set; }
+
+        public DateTime Time { get; set; }
     }
 }
 

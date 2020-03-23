@@ -1,4 +1,5 @@
-﻿using Amsel.Model.Tenant.TenantModels;
+﻿
+using Amsel.Model.Tenant.TenantModels;
 
 namespace Amsel.Model.Tenant.Interfaces
 {

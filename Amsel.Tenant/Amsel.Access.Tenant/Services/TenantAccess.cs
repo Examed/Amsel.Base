@@ -1,5 +1,6 @@
-﻿using Amsel.Framework.Structure.Interfaces;
-using Amsel.Framework.Structure.Models.Address;
+﻿using Amsel.Framework.Structure.Factory;
+using Amsel.Framework.Structure.Interfaces;
+using Amsel.Framework.Structure.Services;
 using Amsel.Framework.Utilities.Extensions.Http;
 using Amsel.Model.Tenant.TenantModels;
 using Amsel.Resources.Authentication.Endpoints;
@@ -9,23 +10,23 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Amsel.Access.Authentication.Services
+namespace Amsel.Access.Tenant.Services
 {
     public class TenantAccess : CRUDAccess<TenantEntity>
     {
-        #region  CONSTRUCTORS
-
         public TenantAccess(IAuthenticationService authenticationService) : base(authenticationService) { }
 
-        #region PUBLIC METHODES
-        #endregion
+        [NotNull] UriBuilder TenantGet => UriBuilderFactory.GetAPIBuilder(Endpoint, Resource, TenantControllerResources.GET, RequestLocal);
 
 
-        public async Task<Guid?> GetIdByNameAsync(string name)
-        {
-            TenantEntity tenant = await GetTenantByNameAsync(name).ConfigureAwait(false);
-            return tenant.Id;
-        }
+        /// <inheritdoc/>
+        protected override string Endpoint => AuthEndpointResources.ENDPOINT;
+
+        protected override bool RequestLocal => false;
+
+        /// <inheritdoc/>
+        protected override string Resource => AuthEndpointResources.TENANT;
+
 
         public async Task<TenantEntity> GetTenantAsync(Guid id)
         {
@@ -39,19 +40,5 @@ namespace Amsel.Access.Authentication.Services
             HttpResponseMessage response = await GetAsync(TenantGet, (nameof(name), name)).ConfigureAwait(false);
             return await response.DeserializeElseThrowAsync<TenantEntity>().ConfigureAwait(false);
         }
-        #endregion
-
-        #region STATICS, CONST and FIELDS
-
-        /// <inheritdoc/>
-        protected override string Endpoint => AuthEndpointResources.ENDPOINT;
-
-        /// <inheritdoc/>
-        protected override string Resource => AuthEndpointResources.TENANT;
-
-        [NotNull] private UriBuilder TenantGet => UriBuilderFactory.GetAPIBuilder(Endpoint, Resource, TenantControllerResources.GET, RequestLocal);
-
-        protected override bool RequestLocal => false;
-        #endregion
     }
 }

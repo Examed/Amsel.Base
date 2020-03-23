@@ -1,7 +1,7 @@
-﻿using Amsel.Access.Authentication.Services;
+﻿using Amsel.Access.Tenant.Services;
 using Autofac;
 
-namespace Amsel.Access.Authentication.Bootstrap
+namespace Amsel.Access.Tenant.Bootstrap
 {
     /// <inheritdoc/>
     public class TenantAccessModule : Module

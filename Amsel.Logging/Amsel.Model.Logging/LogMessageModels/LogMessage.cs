@@ -1,4 +1,4 @@
-﻿using Amsel.Framework.Database.SQL.Context;
+﻿using Amsel.Framework.Base.Attributs;
 using Microsoft.Extensions.Logging;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -9,10 +9,20 @@ namespace Amsel.Model.Logging.LogMessageModels
     [ComplexType]
     public class LogMessage
     {
-        [Key]
-        public int Id { get; set; }
+        public LogMessage() { }
+
+        public LogMessage(LogLevel level, string logger, string message, string type, string exception = null)
+        {
+            Exception = exception;
+            Level = level;
+            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            Message = message ?? throw new ArgumentNullException(nameof(message));
+        }
 
         public string Exception { get; set; }
+
+        [Key]
+        public int Id { get; set; }
 
         public LogLevel Level { get; set; }
 
@@ -21,19 +31,6 @@ namespace Amsel.Model.Logging.LogMessageModels
 
         [Distinct]
         public string Message { get; set; }
-
-
-
-        public LogMessage() { }
-
-        public LogMessage(LogLevel level, string logger, string message, string type, string exception = null)
-        {
-
-            Exception = exception;
-            Level = level;
-            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            Message = message ?? throw new ArgumentNullException(nameof(message));
-        }
     }
 }
 

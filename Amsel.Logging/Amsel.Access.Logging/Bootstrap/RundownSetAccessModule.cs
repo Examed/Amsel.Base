@@ -1,7 +1,7 @@
-﻿using Amsel.Access.Rundown.Services;
+﻿using Amsel.Access.Logging.Services;
 using Autofac;
 
-namespace Amsel.Access.Rundown.Bootstrap
+namespace Amsel.Access.Logging.Bootstrap
 {
     /// <inheritdoc/>
     public class LoggingAccessModule : Module
