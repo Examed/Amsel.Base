@@ -11,7 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Amsel.Tenant\Amsel.Interfaces.Tenant\Amsel.Interfaces.Tenant.csproj" />
     <ProjectReference Include="..\..\Amsel.Tenant\Amsel.Model.Tenant\Amsel.Model.Tenant.csproj" />
   </ItemGroup>
 
