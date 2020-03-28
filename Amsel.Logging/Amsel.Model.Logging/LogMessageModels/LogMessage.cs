@@ -1,4 +1,4 @@
-﻿using Amsel.Framework.Base.Attributs;
+﻿
 using Microsoft.Extensions.Logging;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -25,11 +25,9 @@ namespace Amsel.Model.Logging.LogMessageModels
         public int Id { get; set; }
 
         public LogLevel Level { get; set; }
-
-        [Distinct]
+        //Distinct
         public string Logger { get; set; }
-
-        [Distinct]
+        //Distinct  
         public string Message { get; set; }
     }
 }
