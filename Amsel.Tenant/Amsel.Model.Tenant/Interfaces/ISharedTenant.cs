@@ -7,8 +7,5 @@ namespace Amsel.Model.Tenant.Interfaces
     {
         bool IsPublic { get; set; }
 
-        bool IsSystem { get; set; }
-
-        ICollection<TenantEntity> UsedBy { get; set; }
     }
 }
