@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Amsel.Model.Tenant.Interfaces;
 using Amsel.Model.Tenant.TenantModels;
-using Amsel.Model.Tenant.Interfaces;
+using System;
 
 namespace Amsel.Model.Tenant.Extentions
 {
     public static class SharedTenantExtention
     {
-        public static bool IsUsable(this ISharedTenant sharedTenant,TenantEntity tenant)
+        public static bool IsUsable(this ISharedTenant sharedTenant, TenantEntity tenant)
         {
-            return sharedTenant.IsUsable(tenant.TenantName);
+            return sharedTenant.IsUsable(tenant.Name);
         }
 
         public static bool IsUsable(this ISharedTenant sharedTenant, TenantName tenantName)
@@ -20,7 +18,7 @@ namespace Amsel.Model.Tenant.Extentions
 
         public static bool IsUsable(this ISharedTenant sharedTenant, string tenantName)
         {
-            if (tenantName.Equals(sharedTenant.Tenant?.TenantName))
+            if (tenantName.Equals(sharedTenant.Tenant?.Name))
                 return true;
             if (sharedTenant.IsPublic)
                 return true;
@@ -29,7 +27,7 @@ namespace Amsel.Model.Tenant.Extentions
         }
         public static bool IsEdible(this ISharedTenant sharedTenant, TenantEntity tenant)
         {
-            return sharedTenant.IsEdible(tenant.TenantName);
+            return sharedTenant.IsEdible(tenant.Name);
         }
 
         public static bool IsEdible(this ISharedTenant sharedTenant, TenantName tenantName)
@@ -38,7 +36,7 @@ namespace Amsel.Model.Tenant.Extentions
         }
         public static bool IsEdible(this ISharedTenant sharedTenant, string tenantName)
         {
-            if (tenantName.Equals(sharedTenant.Tenant?.TenantName))
+            if (tenantName.Equals(sharedTenant.Tenant?.Name))
                 return true;
             return false;
         }

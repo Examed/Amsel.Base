@@ -8,14 +8,14 @@ namespace Amsel.Model.Tenant.TenantModels
     {
         protected TenantEntity() { }
 
-        public TenantEntity(string tenantName) => TenantName = tenantName ?? throw new ArgumentNullException(nameof(tenantName));
+        public TenantEntity(string name) => Name = name ?? throw new ArgumentNullException(nameof(name));
 
 
         [JsonConstructor]
-        public TenantEntity(Guid id, string tenantName)
+        public TenantEntity(Guid id, string name)
         {
             Id = id;
-            TenantName = tenantName ?? throw new ArgumentNullException(nameof(tenantName));
+            Name = name ?? throw new ArgumentNullException(nameof(name));
         }
 
         public bool Admin { get; set; }
@@ -23,6 +23,6 @@ namespace Amsel.Model.Tenant.TenantModels
         [Key]
         public Guid Id { get; protected set; }
 
-        public string TenantName { get; set; }
+        public string Name { get; set; }
     }
 }
