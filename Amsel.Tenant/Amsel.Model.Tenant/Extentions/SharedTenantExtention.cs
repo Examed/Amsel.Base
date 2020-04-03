@@ -1,6 +1,5 @@
 ﻿using Amsel.Model.Tenant.Interfaces;
 using Amsel.Model.Tenant.TenantModels;
-using System;
 
 namespace Amsel.Model.Tenant.Extentions
 {

@@ -1,7 +1,5 @@
-﻿using Amsel.Framework.Base.Interfaces;
-using JsonLogic.Net;
+﻿using JsonLogic.Net;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
