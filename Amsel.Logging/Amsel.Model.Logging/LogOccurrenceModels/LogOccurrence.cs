@@ -29,7 +29,9 @@ namespace Amsel.Model.Logging.LogOccurrenceModels
 
         public string StackTrace { get; set; }
 
-        public TenantEntity Tenant { get; set; }
+        public Guid TenantId { get; set; }
+        [ForeignKey(nameof(TenantId))]
+        public virtual TenantEntity Tenant { get; set; }
 
         public DateTime Time { get; set; }
     }
