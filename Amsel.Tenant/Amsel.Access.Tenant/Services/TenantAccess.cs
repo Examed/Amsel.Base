@@ -14,11 +14,6 @@ namespace Amsel.Access.Tenant.Services
 {
     public class TenantAccess : CRUDAccess<TenantEntity>
     {
-        public TenantAccess(IAuthenticationService authenticationService) : base(authenticationService) { }
-
-        [NotNull] UriBuilder TenantGet => UriBuilderFactory.GetAPIBuilder(Endpoint, Resource, TenantControllerResources.GET, RequestLocal);
-
-
         /// <inheritdoc/>
         protected override string Endpoint => AuthEndpointResources.ENDPOINT;
 
@@ -27,7 +22,11 @@ namespace Amsel.Access.Tenant.Services
         /// <inheritdoc/>
         protected override string Resource => AuthEndpointResources.TENANT;
 
+        [NotNull] private UriBuilder TenantGet => UriBuilderFactory.GetAPIBuilder(Endpoint, Resource, TenantControllerResources.GET, RequestLocal);
 
+        public TenantAccess(IAuthenticationService authenticationService) : base(authenticationService) { }
+
+        #region PUBLIC METHODES
         public async Task<TenantEntity> GetTenantAsync(Guid id)
         {
             HttpResponseMessage response = await GetAsync(TenantGet, (nameof(id), id)).ConfigureAwait(false);
@@ -40,5 +39,6 @@ namespace Amsel.Access.Tenant.Services
             HttpResponseMessage response = await GetAsync(TenantGet, (nameof(name), name)).ConfigureAwait(false);
             return await response.DeserializeElseThrowAsync<TenantEntity>().ConfigureAwait(false);
         }
+        #endregion
     }
 }

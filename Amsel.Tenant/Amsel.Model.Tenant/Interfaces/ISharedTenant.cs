@@ -3,6 +3,5 @@
     public interface ISharedTenant : ITenantEntity
     {
         bool IsPublic { get; set; }
-
     }
 }

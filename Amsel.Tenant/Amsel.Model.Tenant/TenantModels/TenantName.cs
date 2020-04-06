@@ -2,9 +2,13 @@
 {
     public class TenantName
     {
-        string _name;
+        private string _name;
 
         public TenantName(string name) => _name = name;
+
+        #region PUBLIC METHODES
+        public override string ToString() => _name;
+        #endregion
 
         public static implicit operator TenantName(string name)
         {
@@ -14,7 +18,5 @@
 
             return new TenantName(name);
         }
-
-        public override string ToString() => _name;
     }
 }

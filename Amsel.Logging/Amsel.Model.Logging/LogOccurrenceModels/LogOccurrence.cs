@@ -10,16 +10,6 @@ namespace Amsel.Model.Logging.LogOccurrenceModels
     [ComplexType]
     public class LogOccurrence : ITenantEntity
     {
-        public LogOccurrence() { }
-
-        public LogOccurrence(LogMessage message, string properties, string stackTrace)
-        {
-            Message = message;
-            Properties = properties ?? throw new ArgumentNullException(nameof(properties));
-            StackTrace = stackTrace;
-            Time = DateTime.UtcNow;
-        }
-
         [Key]
         public int Id { get; set; }
 
@@ -29,11 +19,22 @@ namespace Amsel.Model.Logging.LogOccurrenceModels
 
         public string StackTrace { get; set; }
 
-        public Guid TenantId { get; set; }
         [ForeignKey(nameof(TenantId))]
         public virtual TenantEntity Tenant { get; set; }
 
+        public Guid TenantId { get; set; }
+
         public DateTime Time { get; set; }
+
+        public LogOccurrence() { }
+
+        public LogOccurrence(LogMessage message, string properties, string stackTrace)
+        {
+            Message = message;
+            Properties = properties ?? throw new ArgumentNullException(nameof(properties));
+            StackTrace = stackTrace;
+            Time = DateTime.UtcNow;
+        }
     }
 }
 

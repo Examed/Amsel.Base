@@ -9,6 +9,19 @@ namespace Amsel.Model.Logging.LogMessageModels
     [ComplexType]
     public class LogMessage
     {
+        public string Exception { get; set; }
+
+        [Key]
+        public int Id { get; set; }
+
+        public LogLevel Level { get; set; }
+
+        //Distinct
+        public string Logger { get; set; }
+
+        //Distinct  
+        public string Message { get; set; }
+
         public LogMessage() { }
 
         public LogMessage(LogLevel level, string logger, string message, string type, string exception = null)
@@ -18,17 +31,6 @@ namespace Amsel.Model.Logging.LogMessageModels
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
             Message = message ?? throw new ArgumentNullException(nameof(message));
         }
-
-        public string Exception { get; set; }
-
-        [Key]
-        public int Id { get; set; }
-
-        public LogLevel Level { get; set; }
-        //Distinct
-        public string Logger { get; set; }
-        //Distinct  
-        public string Message { get; set; }
     }
 }
 
