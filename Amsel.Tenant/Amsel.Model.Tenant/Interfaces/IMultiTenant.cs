@@ -8,6 +8,6 @@ namespace Amsel.Model.Tenant.Interfaces
     {
         TenantEntity Tenant { get; set; }
 
-        Guid TenantId { get; set; }
+        Guid? TenantId { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace Amsel.Model.Logging.LogOccurrenceModels
         [ForeignKey(nameof(TenantId))]
         public virtual TenantEntity Tenant { get; set; }
 
-        public Guid TenantId { get; set; }
+        public Guid? TenantId { get; set; }
 
         public DateTime Time { get; set; }
 

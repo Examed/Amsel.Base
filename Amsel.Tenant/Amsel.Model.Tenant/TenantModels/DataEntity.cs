@@ -16,7 +16,7 @@ namespace Amsel.Model.Tenant.TenantModels
         [ForeignKey(nameof(TenantId))]
         public virtual TenantEntity Tenant { get; set; }
 
-        public Guid TenantId { get; set; }
+        public Guid? TenantId { get; set; }
 
         public string Type { get; set; }
 
