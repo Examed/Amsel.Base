@@ -22,17 +22,11 @@ namespace Amsel.Access.Tenant.Services
         /// <inheritdoc/>
         protected override string Resource => AuthEndpointResources.TENANT;
 
-        [NotNull] public UriBuilder TenantGet => UriBuilderFactory.GetAPIBuilder(Endpoint, Resource, TenantControllerResources.GET, RequestLocal);
+        [NotNull] public UriBuilder TenantGet => UriBuilderFactory.GetAPIBuilder(Endpoint, Resource, TenantControllerResources.GET_BY_NAME, RequestLocal);
 
         public TenantAccess(IAuthenticationService authenticationService) : base(authenticationService) { }
 
         #region PUBLIC METHODES
-        public async Task<TenantEntity> GetTenantAsync(Guid id)
-        {
-            HttpResponseMessage response = await GetAsync(TenantGet, (nameof(id), id)).ConfigureAwait(false);
-            return await response.DeserializeElseThrowAsync<TenantEntity>().ConfigureAwait(false);
-        }
-
         [NotNull]
         public async Task<TenantEntity> GetTenantByNameAsync(string name)
         {
