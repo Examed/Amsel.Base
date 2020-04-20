@@ -1,4 +1,6 @@
-﻿namespace Amsel.Model.Tenant.TenantModels
+﻿using System;
+
+namespace Amsel.Model.Tenant.TenantModels
 {
     public class TenantName
     {
