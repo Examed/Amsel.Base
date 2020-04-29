@@ -1,5 +1,4 @@
-﻿namespace Amsel.Resources.Logging.Endpoints
-{
+﻿namespace Amsel.Resources.Logging.Endpoints {
     public static class LoggingEndpointResources
     {
         public const string ENDPOINT = "logging";

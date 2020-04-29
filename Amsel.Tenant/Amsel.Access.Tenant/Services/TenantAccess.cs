@@ -10,29 +10,23 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Amsel.Access.Tenant.Services
-{
+namespace Amsel.Access.Tenant.Services {
     public class TenantAccess : CRUDAccess<TenantEntity>
     {
+        public TenantAccess(IAuthenticationService authenticationService) : base(authenticationService) { }
+
+        [NotNull] public UriBuilder TenantGet
+                      => UriBuilderFactory.GetAPIBuilder(Endpoint, Resource, TenantControllerResources.GET_BY_NAME, RequestLocal);
         /// <inheritdoc/>
         protected override string Endpoint => AuthEndpointResources.ENDPOINT;
-
         protected override bool RequestLocal => false;
-
         /// <inheritdoc/>
         protected override string Resource => AuthEndpointResources.TENANT;
 
-        [NotNull] public UriBuilder TenantGet => UriBuilderFactory.GetAPIBuilder(Endpoint, Resource, TenantControllerResources.GET_BY_NAME, RequestLocal);
-
-        public TenantAccess(IAuthenticationService authenticationService) : base(authenticationService) { }
-
-        #region PUBLIC METHODES
         [NotNull]
-        public async Task<TenantEntity> GetTenantByNameAsync(string name)
-        {
+        public async Task<TenantEntity> GetTenantByNameAsync(string name) {
             HttpResponseMessage response = await GetAsync(TenantGet, (nameof(name), name)).ConfigureAwait(false);
             return await response.DeserializeElseThrowAsync<TenantEntity>().ConfigureAwait(false);
         }
-        #endregion
     }
 }

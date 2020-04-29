@@ -1,19 +1,18 @@
 ﻿using Amsel.Model.Tenant.Interfaces;
 using Amsel.Model.Tenant.TenantModels;
 
-namespace Amsel.Model.Tenant.Extentions
-{
+namespace Amsel.Model.Tenant.Extentions {
     public static class SharedTenantExtention
     {
-        #region PUBLIC METHODES
         public static bool IsEdible(this ISharedTenant sharedTenant, TenantEntity tenant) => sharedTenant.IsEdible(tenant.Name);
 
         public static bool IsEdible(this ISharedTenant sharedTenant, TenantName tenantName) => sharedTenant.IsEdible(tenantName.ToString());
 
-        public static bool IsEdible(this ISharedTenant sharedTenant, string tenantName)
-        {
-            if(tenantName.Equals(sharedTenant.Tenant?.Name))
+        public static bool IsEdible(this ISharedTenant sharedTenant, string tenantName) {
+            if(tenantName.Equals(sharedTenant.Tenant?.Name)) {
                 return true;
+            }
+
             return false;
         }
 
@@ -21,15 +20,16 @@ namespace Amsel.Model.Tenant.Extentions
 
         public static bool IsUsable(this ISharedTenant sharedTenant, TenantName tenantName) => sharedTenant.IsUsable(tenantName.ToString());
 
-        public static bool IsUsable(this ISharedTenant sharedTenant, string tenantName)
-        {
-            if(tenantName.Equals(sharedTenant.Tenant?.Name))
+        public static bool IsUsable(this ISharedTenant sharedTenant, string tenantName) {
+            if(tenantName.Equals(sharedTenant.Tenant?.Name)) {
                 return true;
-            if(sharedTenant.IsPublic)
+            }
+
+            if(sharedTenant.IsPublic) {
                 return true;
+            }
 
             return false;
         }
-        #endregion
     }
 }
