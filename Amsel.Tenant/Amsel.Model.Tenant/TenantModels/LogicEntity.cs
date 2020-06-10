@@ -10,6 +10,7 @@ namespace Amsel.Model.Tenant.TenantModels {
         [NotMapped]
         public JToken Conditions { get; set; }
 
+        #region public methods
         // [JsonConverter(typeof(GenericListTypeConverter<DataEntity>))]
         // public virtual IList<DataEntity> Data { get; set; }
         public virtual bool IsConditionsMet(IEnumerable<DataEntity> entities) => IsConditionsMet(null, entities?.ToArray());
@@ -19,12 +20,15 @@ namespace Amsel.Model.Tenant.TenantModels {
         public virtual bool IsConditionsMet(JsonLogicEvaluator evaluator, IEnumerable<DataEntity> entities)
             => IsConditionsMet(evaluator, entities?.ToArray());
 
-        public virtual bool IsConditionsMet(JsonLogicEvaluator evaluator, params DataEntity[] entities) {
-            if((Conditions == null) || !Conditions.HasValues) {
+        public virtual bool IsConditionsMet(JsonLogicEvaluator evaluator, params DataEntity[] entities)
+        {
+            if((Conditions == null) || !Conditions.HasValues)
+            {
                 return true;
             }
 
-            if(evaluator == null) {
+            if(evaluator == null)
+            {
                 evaluator = new JsonLogicEvaluator(EvaluateOperators.Default);
             }
 
@@ -34,17 +38,20 @@ namespace Amsel.Model.Tenant.TenantModels {
 
             if(entities != null) {
                 foreach(DataEntity item in entities) {
-                    if(item?.Id != null) {
+                    if(item?.Id != null)
+                    {
                         data.Add(item.Name, item.GetData());
                     }
                 }
             }
 
-            if(evaluator.Apply(Conditions, data) is bool result) {
+            if(evaluator.Apply(Conditions, data) is bool result)
+            {
                 return result;
             }
 
             return false;
         }
+        #endregion
     }
 }

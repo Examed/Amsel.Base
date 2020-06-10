@@ -8,9 +8,12 @@ namespace Amsel.Model.Logging.LogMessageModels {
     [ComplexType]
     public class LogMessage
     {
-        public LogMessage() { }
+        public LogMessage()
+        {
+        }
 
-        public LogMessage(LogLevel level, string logger, string message, string type, string exception = null) {
+        public LogMessage(LogLevel level, string logger, string message, string type, string exception = null)
+        {
             Exception = exception;
             Level = level;
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));

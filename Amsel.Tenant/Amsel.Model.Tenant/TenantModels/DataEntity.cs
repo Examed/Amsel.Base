@@ -6,7 +6,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Amsel.Model.Tenant.TenantModels {
     public abstract class DataEntity : IGuidEntity, ITenantEntity, INamedEntity
     {
-        protected DataEntity() {
+        protected DataEntity()
+        {
             Type = GetType().FullName;
             Name = GetType().Name;
         }
@@ -19,6 +20,8 @@ namespace Amsel.Model.Tenant.TenantModels {
         public Guid? TenantId { get; set; }
         public string Type { get; set; }
 
+        #region public methods
         public abstract object GetData();
+        #endregion
     }
 }
