@@ -15,8 +15,8 @@ namespace Amsel.Access.Tenant.Services {
         public TenantAccess(IAuthenticationService authenticationService) : base(authenticationService) { }
 
         [NotNull]
-        public UriBuilder TenantGet
-            => UriBuilderFactory.GetAPIBuilder(Endpoint, Resource, TenantControllerResources.GET_BY_NAME, RequestLocal);
+        public UriBuilder TenantGet =>
+            UriBuilderFactory.GetAPIBuilder(Endpoint, Resource, TenantControllerResources.GET_BY_NAME, RequestLocal);
         /// <inheritdoc/>
         protected override string Endpoint => AuthEndpointResources.ENDPOINT;
         protected override bool RequestLocal => false;
@@ -24,7 +24,8 @@ namespace Amsel.Access.Tenant.Services {
         protected override string Resource => AuthEndpointResources.TENANT;
 
         [NotNull]
-        public async Task<TenantEntity> GetTenantByNameAsync(string name) {
+        public async Task<TenantEntity> GetTenantByNameAsync(string name)
+        {
             HttpResponseMessage response = await GetAsync(TenantGet, (nameof(name), name)).ConfigureAwait(false);
             return await response.DeserializeElseThrowAsync<TenantEntity>().ConfigureAwait(false);
         }

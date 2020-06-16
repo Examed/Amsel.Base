@@ -15,10 +15,11 @@ namespace Amsel.Model.Tenant.TenantModels {
 
         public virtual bool IsConditionsMet(params DataEntity[] entities) => IsConditionsMet(null, entities);
 
-        public virtual bool IsConditionsMet(JsonLogicEvaluator evaluator, IEnumerable<DataEntity> entities)
-            => IsConditionsMet(evaluator, entities?.ToArray());
+        public virtual bool IsConditionsMet(JsonLogicEvaluator evaluator, IEnumerable<DataEntity> entities) =>
+            IsConditionsMet(evaluator, entities?.ToArray());
 
-        public virtual bool IsConditionsMet(JsonLogicEvaluator evaluator, params DataEntity[] entities) {
+        public virtual bool IsConditionsMet(JsonLogicEvaluator evaluator, params DataEntity[] entities)
+        {
             if ((Conditions == null) || !Conditions.HasValues) {
                 return true;
             }

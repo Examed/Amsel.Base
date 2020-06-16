@@ -5,7 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Amsel.Model.Tenant.TenantModels {
     public abstract class DataEntity : IGuidEntity, ITenantEntity, INamedEntity {
-        protected DataEntity() {
+        protected DataEntity()
+        {
             Type = GetType().FullName;
             Name = GetType().Name;
         }

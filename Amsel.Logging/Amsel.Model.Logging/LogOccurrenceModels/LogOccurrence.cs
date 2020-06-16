@@ -10,7 +10,8 @@ namespace Amsel.Model.Logging.LogOccurrenceModels {
     public class LogOccurrence : ITenantEntity {
         public LogOccurrence() { }
 
-        public LogOccurrence(LogMessage message, string properties, string stackTrace) {
+        public LogOccurrence(LogMessage message, string properties, string stackTrace)
+        {
             Message = message;
             Properties = properties ?? throw new ArgumentNullException(nameof(properties));
             StackTrace = stackTrace;

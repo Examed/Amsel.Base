@@ -7,7 +7,8 @@ namespace Amsel.Model.Tenant.TenantModels {
         protected TenantEntity() { }
         public TenantEntity(string name) => Name = name ?? throw new ArgumentNullException(nameof(name));
         [JsonConstructor]
-        public TenantEntity(Guid id, string name) {
+        public TenantEntity(Guid id, string name)
+        {
             Id = id;
             Name = name ?? throw new ArgumentNullException(nameof(name));
         }
