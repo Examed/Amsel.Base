@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Amsel.Access.Tenant.Services {
     public class TenantAccess : CRUDAccess<TenantEntity> {
-        public TenantAccess(IAuthenticationService authenticationService) : base(authenticationService) { }
+        public TenantAccess(IAuthenticationTokenService authenticationService) : base(authenticationService) { }
 
         [NotNull]
         public UriBuilder TenantGet =>
