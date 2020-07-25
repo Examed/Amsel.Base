@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Amsel.Model.Tenant.TenantModels {
     public class TenantEntity {
         protected TenantEntity() { }
+
         public TenantEntity(string name) => Name = name ?? throw new ArgumentNullException(nameof(name));
         [JsonConstructor]
         public TenantEntity(Guid id, string name)

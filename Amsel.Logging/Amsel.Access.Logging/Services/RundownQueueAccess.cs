@@ -8,6 +8,7 @@ using Amsel.Resources.Logging.Endpoints;
 namespace Amsel.Access.Logging.Services {
     public class LogMessageAccess : CRUDAccess<LogMessage> {
         public LogMessageAccess(ISecretAuthenticationService authenticationService) : base(authenticationService) { }
+
         public LogMessageAccess(ISecretAuthenticationService authenticationService, TenantName tenant)
             : base(tenant, authenticationService) { }
 
@@ -20,6 +21,7 @@ namespace Amsel.Access.Logging.Services {
 
     public class LogOccurrenceAccess : CRUDAccess<LogOccurrence> {
         public LogOccurrenceAccess(ISecretAuthenticationService authenticationService) : base(authenticationService) { }
+
         public LogOccurrenceAccess(ISecretAuthenticationService authenticationService, TenantName tenant)
             : base(tenant, authenticationService) { }
 
